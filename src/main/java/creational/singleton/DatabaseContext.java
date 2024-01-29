@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class DatabaseContext {
     private String databaseName;
-    private static DatabaseContext instance;
+    private volatile static DatabaseContext instance;
 
     private DatabaseContext(String databaseName) {
 
@@ -24,9 +24,15 @@ public class DatabaseContext {
 
     public static DatabaseContext getInstance(String databaseName)
     {
-        if(instance==null)
-            instance = new DatabaseContext(databaseName);
-        return instance;
+        DatabaseContext context = instance;
+        if(context!=null) return context;
+
+        synchronized (DatabaseContext.class)
+        {
+            if(instance==null)
+                instance = new DatabaseContext(databaseName);
+            return instance;
+        }
     }
 
     public void connect() {

@@ -25,9 +25,8 @@ public class Main {
         //
         Thread thread1 = new Thread(new ThreadOne());
         Thread thread2 = new Thread(new ThreadTwo());
-
-        thread1.start();
         thread2.start();
+        thread1.start();
     }
 
     static class ThreadOne implements Runnable {
