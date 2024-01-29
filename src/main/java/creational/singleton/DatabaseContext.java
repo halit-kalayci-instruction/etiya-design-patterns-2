@@ -21,7 +21,7 @@ public class DatabaseContext {
 
         this.databaseName = databaseName;
     }
-
+    // 11.20
     public static DatabaseContext getInstance(String databaseName)
     {
         DatabaseContext context = instance;
