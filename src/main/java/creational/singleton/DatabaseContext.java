@@ -2,15 +2,17 @@ package creational.singleton;
 
 public class DatabaseContext {
     private String databaseName;
+    private static DatabaseContext instance;
 
-    public DatabaseContext(String databaseName) {
+    private DatabaseContext(String databaseName) {
         this.databaseName = databaseName;
     }
 
-    public DatabaseContext getInstance(String databaseName)
+    public static DatabaseContext getInstance(String databaseName)
     {
-        // ilgili kontrol
-        return new DatabaseContext(databaseName);
+        if(instance==null)
+            instance = new DatabaseContext(databaseName);
+        return instance;
     }
 
     public void connect() {
