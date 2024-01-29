@@ -10,7 +10,6 @@ public class DocumentFactory {
         switch(type)
         {
             case PDF:
-
                 return new PDF();
             case EXCEL:
 
