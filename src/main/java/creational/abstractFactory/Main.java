@@ -12,8 +12,6 @@ public class Main {
 
         Input input = uiFactory.createInput();
 
-
-
         uiFactory = new LightThemeFactory();
 
         Button button1 = uiFactory.createButton();
