@@ -15,5 +15,6 @@ public class Main {
         Product product2 = new Product.Builder().id(1).unitPrice(500).build();
 
         System.out.println("**");
+
     }
 }
