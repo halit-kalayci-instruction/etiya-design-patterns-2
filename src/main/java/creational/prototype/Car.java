@@ -3,13 +3,13 @@ package creational.prototype;
 public class Car implements Cloneable
 {
     private int id;
-    private String brand;
+    private Brand brand;
     private String model;
     private int year;
     private String color;
 
 
-    public Car(int id, String brand, String model, int year, String color) {
+    public Car(int id, Brand brand, String model, int year, String color) {
         this.id = id;
         this.brand = brand;
         this.model = model;
@@ -24,7 +24,9 @@ public class Car implements Cloneable
         try {
             // Shallow Copy => Yüzeysel Kopyalama
             // Deep Copy => Derinsel Kopyalama
-            return (Car) super.clone();
+            Car car = (Car) super.clone();
+            car.brand = this.brand.clone();
+            return car;
         } catch (CloneNotSupportedException e) {
             throw new RuntimeException(e);
         }
@@ -38,11 +40,11 @@ public class Car implements Cloneable
         this.id = id;
     }
 
-    public String getBrand() {
+    public Brand getBrand() {
         return brand;
     }
 
-    public void setBrand(String brand) {
+    public void setBrand(Brand brand) {
         this.brand = brand;
     }
 
